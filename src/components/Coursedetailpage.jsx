@@ -1,0 +1,7 @@
+function Coursedetailpage(){
+    return(
+        <>
+        
+        </>
+    )
+}
