@@ -1,0 +1,121 @@
+import { useState } from "react";
+import Navbar from "./Navbar";
+
+export default function ProductsPage () {
+    const [products, setProducts] = useState([
+  {
+    id: 1,
+    name: "iPhone 15 Pro",
+    category: "Electronics",
+    brand: "Apple",
+    price: 999,
+    stock: 15,
+    image: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&q=80",
+  },
+  {
+    id: 2,
+    name: "Sony WH-1000XM5 Headphones",
+    category: "Electronics",
+    brand: "Sony",
+    price: 399,
+    stock: 20,
+    image: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=600&q=80",
+  },
+  {
+    id: 3,
+    name: "Men's Denim Jacket",
+    category: "Fashion",
+    brand: "Levi's",
+    price: 79,
+    stock: 35,
+    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80",
+  },
+  {
+    id: 4,
+    name: "Nike Air Max Sneakers",
+    category: "Fashion",
+    brand: "Nike",
+    price: 129,
+    stock: 28,
+    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80",
+  },
+  {
+    id: 5,
+    name: "Coffee Maker",
+    category: "Home & Kitchen",
+    brand: "Philips",
+    price: 120,
+    stock: 12,
+    image: "https://images.unsplash.com/photo-1517705008128-361805f42e86?w=600&q=80",
+  },
+  {
+    id: 6,
+    name: "Modern Table Lamp",
+    category: "Home & Kitchen",
+    brand: "IKEA",
+    price: 45,
+    stock: 18,
+    image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&q=80",
+  },
+  {
+    id: 7,
+    name: "Football",
+    category: "Sports",
+    brand: "Adidas",
+    price: 35,
+    stock: 40,
+    image: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=600&q=80",
+  },
+  {
+    id: 8,
+    name: "Mountain Bike",
+    category: "Sports",
+    brand: "Trek",
+    price: 850,
+    stock: 5,
+    image: "https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=600&q=80",
+  },
+  {
+    id: 9,
+    name: "Atomic Habits",
+    category: "Books",
+    brand: "Penguin",
+    price: 22,
+    stock: 50,
+    image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&q=80",
+  },
+  {
+    id: 10,
+    name: "The Psychology of Money",
+    category: "Books",
+    brand: "Harriman House",
+    price: 18,
+    stock: 30,
+    image: "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=600&q=80",
+  },
+]);
+
+
+    return (
+        <>
+
+        <h1 className="text-center">Products</h1>
+
+      <div className="grid grid-cols-3 gap-8">
+         { products.map((item,index)=>(
+         <div key={index} className=" translate-y-5 transition-all duration-1000 hover:scale-120 hover:border hover:border-black">
+         <div className="h-100">
+               <img src= {item.image} alt="" className="h-full" />
+         </div>
+            <h1>{item.name}</h1>
+            <h1>{item.brand}</h1>
+            <h1>{item.price}</h1>
+
+         </div>
+
+    ))
+    }
+      </div>
+       </>
+    )
+}
