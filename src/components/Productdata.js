@@ -1,8 +1,5 @@
-import { useState } from "react";
-import Navbar from "./Navbar";
-
-export default function ProductsPage () {
-    const [products, setProducts] = useState([
+//Array
+export const products = [
   {
     id: 1,
     name: "iPhone 15 Pro",
@@ -93,29 +90,4 @@ export default function ProductsPage () {
     stock: 30,
     image: "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=600&q=80",
   },
-]);
-
-
-    return (
-        <>
-
-        <h1 className="text-center">Products</h1>
-
-      <div className="grid grid-cols-3 gap-8">
-         { products.map((item,index)=>(
-         <div key={index} className=" translate-y-5 transition-all duration-1000 hover:scale-120 hover:border hover:border-black">
-         <div className="h-100">
-               <img src= {item.image} alt="" className="h-full" />
-         </div>
-            <h1>{item.name}</h1>
-            <h1>{item.brand}</h1>
-            <h1>{item.price}</h1>
-
-         </div>
-
-    ))
-    }
-      </div>
-       </>
-    )
-}
+];

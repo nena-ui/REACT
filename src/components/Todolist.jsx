@@ -3,7 +3,7 @@ import { useState } from "react";
 
 function TodoList() {
   const [user, setUser] = useState({
-    name: "anupam",
+    name: "Nena",
     age: 20,
   });
 
@@ -11,6 +11,8 @@ function TodoList() {
 
   const [inputValue, setInputValue] = useState("");
   const [count,setCount] = useState(0)
+
+
 
   const [todo, setTodo] = useState([ ]);
   const [editId,setEditId] = useState(null)
@@ -20,8 +22,8 @@ function TodoList() {
   const addTodo = () => {
     if(inputValue.trim().length===0) {
       alert("provide some task")
- 
     }
+
 else{
   setCount(count+1)
    const newTask = {
@@ -33,7 +35,7 @@ else{
     setTodo([...todo, newTask]);
     setInputValue("");
 }
-  };
+};
 
   const handleChange = (e) => {
     console.log(e.target.value);
@@ -46,9 +48,11 @@ else{
     const updatedTodo = todo.filter((item,index)=>{
         return item.id !==idToDelete
     })
+
     setTodo(updatedTodo)
 
   }
+
 // [1,2,3,4,5,6]
 
 // const task = {
@@ -64,7 +68,7 @@ else{
          return {...item,isCompleted:!item.isCompleted}
         }
         else {
-return item
+        return item
         }
       })
       setTodo(updatedTodo)

@@ -21,20 +21,33 @@ return (
  </div>
 </div>
 
+
+{/* //Colour Change
+
+const [color,setColor] = useState ("gray")
+const[change,setChange] =useState("black")
+    <div className="flex justify-center">
+  <div className="flex flex-col">
+    <div style={{backgroundColor : color }} className="h-20 w-20  rounded-full">
+     
+    </div>
+     <button onClick={()=>setColor("red")} className="border border-gray-400">red</button>
+      <button onClick={()=>setColor("yellow")} className="border border-gray-400">yellow</button>
+      <button onClick={()=>setColor("green")} className="border border-gray-400">green</button>
+    </div>
+</div> */}
+
+
+//Traffic Lights
 <div className="flex justify-center">
-    <div className="flex  flex-col">
-        <div style={{backgroundColor:'gray'}} className= "h-20 w-20 rounded -full">
-                </div>
-
-            <button {()=>setColor("red")} className="border border-red-400">Red</button>
-            <button {()=>setColor("green ")} className="border border-green-400">Green</button>
-            <button {()=>setColor("yellow")} className="border border-yellow-400">Yellow</button>
+  <h1  style={{color: change}}>Color change</h1>
 </div>
+<div className="flex justify-center gap-4 ">
+  <button onClick={()=>setChange("red")}className="border border-gray-400">red</button>
+  <button onClick={()=>setChange("yellow")}className="border border-gray-400">yellow</button>
+  <button onClick={()=>setChange("green")}className="border border-gray-400">green</button>
 </div>
 
-<h1>Color change</h1>
-    </>
+</>
 )
 }
-
-export default Show

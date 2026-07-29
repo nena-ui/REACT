@@ -1,12 +1,10 @@
+import { useEffect, useState } from "react";
+import Navbar from "../Navbar";
+import ProductCard from "./ProductCard";
 
-//Rafce
-import {useState} from "react";
-import Navbar from "./Navbar";
-import ProductCard from "./Productcard";
-
-export default function Productpage() {
-    const [products,setProducts]= useState([
-    {
+export const ProductPage = ()=> {
+    const [products, setProducts] = useState([
+  {
     id: 1,
     name: "iPhone 15 Pro",
     category: "Electronics",
@@ -101,27 +99,35 @@ export default function Productpage() {
 const categories = ["All",...new Set ( products.map((item,index)=>item.category))]
 const [category,setCategory] = useState("All")
 
+const user = {
+  name : "manjil",
+  age: 23
+}
 
+
+localStorage.setItem("productList",JSON.stringify(products))
+
+
+const finalUserobj = JSON.parse (localStorage.getItem ("userObj"))
 
 const filteredProducts = category ==="All" ? products : products.filter((item,index)=> {
     return item.category === category
 
   })
 
-console.log(products)
+
+
+
+
+const [name,setName] = useState("riwaj")
     return (
         <>
-
+   
         {/* <h1 className="text-center">Products</h1> */}
         <div className="flex justify-center">
  <div className="flex gap-4">
         {categories.map((item,index)=>(
-        <button onClick= {()=>setCategory(item)} className="border border-gray-400 p-4 " key={index}>{item}</button>
-        // <button className="border border-gray-100">Electronics</button>
-        // <button className="border border-gray-100" >Fashion</button>
-        // <button className="border border-gray-100">Home & kitchen</button>
-        // <button className="border border-gray-100">Sports</button>
-        // <button className="border border-gray-100">Books</button>
+          <button onClick= {()=>setCategory(item)} className="border border-gray-400 p-4 " key={index}>{item}</button>
         ))}
  </div>
         </div>
@@ -132,31 +138,9 @@ console.log(products)
       
         ))
     }
+
       </div>
 
- 
-    {/* <nav className="border p-4 rounded shadow hover: shadow-lg transition cursor-pointer">
-        <div className="border p-4 rounded shadow hover: shadow-lg transition cursor-pointer">
-            <img src={product.image} alt={product.name} className="h-full object-cover" />
-        </div>
-        <h2 className="text-xl font-bold mt-2">{product.name}</h2>
-        <p className="text-gray-600">{product.brand}</p>
-        <p className="text-green-700 font-semibold">{product.price}</p>
-
-    </nav> */}
-
-    {/* <Navbar />
-
-      <h1 className="text-center text-2xl font-bold my-6">Products</h1>
-      <div className="grid grid-cols-3 gap-8 px-10">
-        {products.map((item) => (
-
-          <ProductCard key={index} product={item} />
-
-
-        ))}
-      </div> */}
-    </>
+        </>
     )
 }
-

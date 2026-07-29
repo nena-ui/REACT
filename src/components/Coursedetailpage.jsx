@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom"
 
 function Coursedetailpage() {
 
+//params
+
 const params = useParams()
 
     return(
