@@ -6,7 +6,7 @@ function Newscard({news}){
 <>  
 <div>     
  <div className="h-60 flex justify-center items-center">
-          <img src={news.urlToimage} al
+          <img src={news.urlToImage} al
            alt={news.name} 
            className="h-full object-cover tranition-transform duration-300 hover:scale-105 hover:opacity-90" />
 

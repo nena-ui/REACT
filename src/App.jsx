@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar"
 import MovieWatchlist from "./components/MovieWatchlist"
 import { ProductPage } from "./components/products/ProductPage"
 import Newslist from "./news/Newslist"
+import APIProductlist from "./components/Products/APIProducts/APIProductlist"
 
 
 function App () {
@@ -40,6 +41,7 @@ function App () {
       <Route path="course/:id" element={<Coursedetailpage/>}/>
       <Route path="/news" element={<Newslist/>}/>
      <Route path="products" element={<ProductPage/>}/>
+     <Route path="api-products" element={<APIProductlist/>}/>
      
      
     </Routes>
