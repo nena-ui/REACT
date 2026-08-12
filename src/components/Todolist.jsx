@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 
-function TodoList() {
+  function TodoList() {
   const [user, setUser] = useState({
     name: "Nena",
     age: 20,
@@ -24,7 +24,8 @@ function TodoList() {
       alert("provide some task")
     }
 
-else{
+  else{
+  //Count
   setCount(count+1)
    const newTask = {
     task  : inputValue,
