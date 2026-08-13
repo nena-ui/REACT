@@ -116,7 +116,7 @@ const BlogsList = () => {
               {/* Category */}
               <span className="inline-block bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm mb-3">
 
-                {item?.category?.name}
+                {item?.category?.title}
 
               </span>
 
