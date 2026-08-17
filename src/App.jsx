@@ -5,13 +5,16 @@ import Homepage from "./components/Homepage"
 import Coursedetailpage from "./components/Coursedetailpage"
 import Navbar from "./components/Navbar"
 import MovieWatchlist from "./components/MovieWatchlist"
-import { ProductPage } from "./components/products/ProductPage"
+import  ProductPage  from "./components/Products/ProductPage"
 import Newslist from "./news/Newslist"
 import APIProductlist from "./components/Products/APIProducts/APIProductlist"
 import APIUsers from "./components/Products/APIUsers"
 import ExpenseTracker from "./components/Project/ExpenseTracker"
 import CrochetPage from "./components/Crochet/CrochetPage"
 import BlogsList from "./components/BlogsList"
+import Signup from "./components/Signup"
+import { useContext } from "react"
+import CounterContext from "./components/contexts/CounterContext"
 
 
 
@@ -31,7 +34,7 @@ function App () {
     <Todolist/> */}
 
 
-     {/* <Navbar />  */}
+     <Navbar /> 
 
   <Routes>
     <Route path="/todo" element ={<h1>This is todo page</h1>} />
@@ -42,12 +45,14 @@ function App () {
     <Route path="/course" element={<h1 className="text-center font-bold text-3xl ">This is Css page </h1>}/>
     <Route path="course/:id" element={<Coursedetailpage/>}/>
     <Route path="/news" element={<Newslist/>}/>
-    <Route path="products" element={<ProductPage/>}/>
-    <Route path="api-products" element={<APIProductlist/>}/>
-    <Route path="users" element={<APIUsers/>}/>
-    <Route path="expenses" element={<ExpenseTracker/>}/>
-    <Route path="crochet" element={<CrochetPage/>}/>
-    <Route path="blog" element={<BlogsList/>}/>
+    <Route path="/products" element={<ProductPage/>}/>
+    <Route path="/api-products" element={<APIProductlist/>}/>
+    <Route path="/users" element={<APIUsers/>}/>
+    <Route path="/expenses" element={<ExpenseTracker/>}/>
+    <Route path="/crochet" element={<CrochetPage/>}/>
+    <Route path="/blog" element={<BlogsList/>}/>
+    <Route path="/signup" element={<Signup/>}/>
+    
      
   </Routes>
   </>

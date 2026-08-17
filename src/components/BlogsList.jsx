@@ -4,29 +4,31 @@ import React, { useEffect, useState } from "react";
 const BlogsList = () => {
 
   const [blogs, setBlogs] = useState([]);
-
-
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [author, setAuthor] = useState("");
   const [image, setImage] = useState("");
 
+  // const [blogsList, setBlogsList] = useState([])
 
   const fetchBlogs = async () => {
     try {
+      const token = localStorage.getItem("token")
+      console.log("Token:", token)
+
       const response = await axios.get(
-        "http://localhost:3000/blog/getAll"
-      );
+        "http://localhost:3000/blog/getAll", 
+        {
+          headers : { 
+          "authorization": 'Bearer ${token}',
+    }});
 
-
-      console.log(response.data);
-
-
-      setBlogs(response.data);
+    console.log("getAll:",response.data);
+    setBlogs(response.data);
 
     } catch (error) {
-      console.log("Error fetching blogs:", error);
+      console.log(Error);
     }
   };
 
@@ -54,11 +56,13 @@ const BlogsList = () => {
       console.log("Body:", body);
 
       const response = await axios.post(
-        "http://localhost:3000/blog/create",
-        body
+     "http://localhost:3000/user/login",
+      formData
       );
 
-      console.log("Response:", response.data);
+      console.log(response.data);
+
+      localStorage.setItem("token", response.data.token);
 
       {/* Refresh */}
       await fetchBlogs();

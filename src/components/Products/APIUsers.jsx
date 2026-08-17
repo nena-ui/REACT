@@ -21,10 +21,10 @@ const APIUsers = () => {
     <div>
           <div>
       <div className="grid grid-cols-3 gap-8">
-        {users.map((item, index) => (
-          <div key={index}>
+        {users.map((item) => (
+          <div key={item.id}>
             {/* <img src={item.images[0]} alt="" /> */}
-            <h1>{item.firstname}</h1>
+            <h1>{item.firstName}</h1>
             <h1>{item.gender}</h1>
             <p>{item.phone}</p>
             <p>${item.password}</p>

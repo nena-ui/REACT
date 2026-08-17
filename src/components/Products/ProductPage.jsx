@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Navbar from "../Navbar";
-import ProductCard from "./ProductCard";
+import ProductCard from "./ProductCard"
 
-export const ProductPage = ()=> {
+export default function ProductPage () {
     const [products, setProducts] = useState([
   {
     id: 1,
@@ -116,9 +116,6 @@ const filteredProducts = category ==="All" ? products : products.filter((item,in
   })
 
 
-
-
-
 const [name,setName] = useState("riwaj")
     return (
         <>
@@ -134,7 +131,7 @@ const [name,setName] = useState("riwaj")
 
       <div className="grid grid-cols-3 gap-8">
          {filteredProducts.map((item,index)=>(
-        <ProductCard key={index} item={item}/>
+        <ProductCard key={item.id} item={item}/>
       
         ))
     }
