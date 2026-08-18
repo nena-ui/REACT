@@ -1,24 +1,33 @@
 import axios from "axios";
 import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import AuthContext from "./contexts/AuthContext";
+// import {PostRequest} from "./http";
 
 
 const Signup = () => {
+
   const [mode, setMode] = useState("signup");
 
   const [fullName, setFullName] = useState("");
+
   const [email, setEmail] = useState("");
+
   const [password, setPassword] = useState("");
 
   const [showPassword, setShowPassword] = useState(false);
+
   const [loading, setLoading] = useState(false);
+
   const [error, setError] = useState("");
 
-//   const {setToken} = useContext(AuthContext)
+  const {setToken} = useContext(AuthContext)
 
+  const navigate = useNavigate()
 
-//   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
+
     e.preventDefault();
     setError("");
     setLoading(true);
@@ -31,10 +40,12 @@ const Signup = () => {
           password,
         };
 
+
         await axios.post(
           "http://localhost:3000/user/create",
           payload
         );
+
 
         alert("Signup successful!");
       } else {
@@ -43,15 +54,16 @@ const Signup = () => {
           password,
         };
 
+
       const response =  await axios.post( "http://localhost:3000/user/login", payload);
-    //   const response =  await PostRequest("user/login",payload)
+      //   const response =  await PostRequest("user/login",payload)
       console.log(response.data)
 
       localStorage.setItem("token",response.data.token)
       setToken(response.data.token)
       
 
-        navigate("/blogs")
+      navigate("/blog")
      
       }
     } catch (err) {

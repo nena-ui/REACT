@@ -1,5 +1,6 @@
 import { useState} from "react"
 import Todolist from "./components/Todolist"
+import Contact from "./components/Contact"
 import { Route, Routes } from 'react-router-dom'
 import Homepage from "./components/Homepage"
 import Coursedetailpage from "./components/Coursedetailpage"
@@ -15,6 +16,12 @@ import BlogsList from "./components/BlogsList"
 import Signup from "./components/Signup"
 import { useContext } from "react"
 import CounterContext from "./components/contexts/CounterContext"
+import Dashboard from "./components/Dashboard/Dashboard"
+import PropsType from "./components/Dashboard/PropsType"
+import PrivateRoutes from "./components/PrivateRoutes"
+import AddBlog from "./components/Dashboard/AddBlog"
+import DashboardLayout from "./components/Layouts/DashboardLayout"
+
 
 
 
@@ -33,11 +40,17 @@ function App () {
     <Show />
     <Todolist/> */}
 
+    
+  {/* const {count,setCount} = useContext(CounterContext)
 
-     <Navbar /> 
+  const [show,setShow] = useState (true) */}
+
+
+     {/* <Navbar />  */}
 
   <Routes>
-    <Route path="/todo" element ={<h1>This is todo page</h1>} />
+    <Route path="/todo" element ={<Todolist/>} />
+    <Route path="contacts" element={<Contact/>}/>
     <Route path="/movie" element={<h1>This is spider man</h1>}/>
     <Route path="/movielist" element={<MovieWatchlist/>}/>
     <Route path="/" element={<Homepage/>}/>
@@ -52,7 +65,13 @@ function App () {
     <Route path="/crochet" element={<CrochetPage/>}/>
     <Route path="/blog" element={<BlogsList/>}/>
     <Route path="/signup" element={<Signup/>}/>
-    
+    <Route path="props" element={<PropsType> <Todolist/> </PropsType>}/>
+
+    <Route path="admin" element={<PrivateRoutes><DashboardLayout/></PrivateRoutes>}>
+    <Route path="blog" element={<AddBlog/>}/>
+    <Route path="product" element={<h1>Dashboard Product</h1>}/>
+    <Route index element={<Dashboard/>}/>
+    </Route>
      
   </Routes>
   </>
