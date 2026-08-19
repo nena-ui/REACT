@@ -30,17 +30,14 @@ const {token,setToken} = useContext(AuthContext)
         <Link to={"/products"}>Products</Link>
         <Link href="#">Contacts</Link>
         {/* <h1>{count}</h1> */}
-
-
-<div>
+       <div>
      {token ? <button onClick={handleLogout} className="bg-black text-white px-4 py-2 rounded-2xl">Logout</button>
       : <Link to={"/signup"}>
         <button className="bg-black text-white px-4 py-2 rounded-2xl">Login</button>
       </Link> }   
-</div>
+    </div>
       </div>
     </nav>
-      
         </>
     )
 }

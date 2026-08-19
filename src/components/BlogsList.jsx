@@ -1,3 +1,4 @@
+import { Button } from "@mantine/core";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
@@ -353,8 +354,12 @@ const BlogsList = () => {
         </button>
 
       </div>
+      
+      {/* Matine */}
+      <Button variant="filled">Button</Button>
 
     </div>
+    
 
   );
 };

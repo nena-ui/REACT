@@ -1,48 +1,54 @@
 import { useState } from "react";
+import axios from "axios";
 
 
   function TodoList() {
+
   const [user, setUser] = useState({
     name: "Nena",
     age: 20,
   });
 
- 
 
   const [inputValue, setInputValue] = useState("");
+
   const [count,setCount] = useState(0)
 
-
-
   const [todo, setTodo] = useState([ ]);
+
   const [editId,setEditId] = useState(null)
+  
 
- 
+  //create
+  const addTodo = async () => {
+  if (inputValue.trim().length === 0) {
+    alert("provide some task")
+  } else {
+    try {
+      const response = await axios.post("http://localhost:3000/todo/create",
+        {
+          title: inputValue,
+          description: "",
+          isCompleted: false
+        }
+      )
 
-  const addTodo = () => {
-    if(inputValue.trim().length===0) {
-      alert("provide some task")
+      console.log(response.data);
+
+      setTodo([todo, response.data]);
+      setInputValue("")
+    } catch (error) {
+      console.log(error)
     }
-
-  else{
-  //Count
-  setCount(count+1)
-   const newTask = {
-    task  : inputValue,
-    id: count,
-    isCompleted : false
-  }
-
-    setTodo([...todo, newTask]);
-    setInputValue("");
-}
-};
+  }}
 
   const handleChange = (e) => {
     console.log(e.target.value);
     setInputValue(e.target.value);
   };
+  
 
+  //delete
   const deleteTodo = (idToDelete)=> {
     console.log(idToDelete)
     
@@ -76,27 +82,34 @@ import { useState } from "react";
     }
 
     const editTodo = (item)=> {
-      setInputValue(item.task)
-      setEditId(item.id)
-
+      setInputValue(item.title)
+      setEditId(item.description)
     }
-
-    const updateTodo = () => {
-     const updatedTodo = todo.map((item,index)=> {
-        if (editId===item.id) {
-         return {...item,task:inputValue}
-        }
-        else {
-      return item
-        }
-      })
-      setTodo(updatedTodo)
-      setEditId(null)
-      setInputValue("")
-    }
-  
     
-  console.log(todo)
+
+    //update
+    const updateTodo = async () => {
+    try {
+    const response = await axios.put("http://localhost:3000/todo/update/${editId}",
+      {
+        title: inputValue,
+        description: "",
+        isCompleted: false
+      }
+    )
+
+    setTodo(
+      todo.map((item) =>
+        item.id === editId ? response.data : item
+      )
+    )
+
+    setEditId(null)
+    setInputValue("")
+  } catch (error) {
+    console.log(error)
+  }
+  }
 
   return (
     <>
@@ -107,7 +120,7 @@ import { useState } from "react";
             onChange={(e) => handleChange(e)}
             className="border border-gray-400 "
             type="text"
-            placeholder="enter any task"
+            placeholder="enter any title"
           />
           <button onClick= {
             ()=> {
@@ -123,7 +136,7 @@ import { useState } from "react";
 
           {todo.map((item, index) => (
             <div className="flex gap-4 items-center">
-              <span style={{color: item.isCompleted ? "green" : "red",textDecoration : item.isCompleted ? "line-through" : ""}}>{item.task} {index}</span>
+              <span style={{color: item.isCompleted ? "green" : "red",textDecoration : item.isCompleted ? "line-through" : ""}}>{item.title} {index}</span>
               <span>id : {item.id}</span>
               <button onClick={()=>toggleDone(index)} className="border border-gray-200">
                 {item.isCompleted ? "undo" : "complete"}
